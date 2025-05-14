@@ -297,9 +297,9 @@ Install a universal Forwarder on another server and make sure the Splunk service
 - ls
 - change directory: cd splunkforwarder/bin/
 - Start splankforwarder: ./splunk start --accept-licence --answer-yes.
-  In case there is an error run these commands:
+  In case there is an error, run these commands:
   - sudo systemctl daemon-reload
-  - sudo systemctl restart splunkforwarder.service
+  - sudo systemctl restart splunkforwarder. service
   - ./restart.
 
 ![image](https://github.com/user-attachments/assets/2cb9d198-1bf3-4459-bc08-7e68917b629f)
@@ -314,4 +314,57 @@ Install a universal Forwarder on another server and make sure the Splunk service
 
 ![image](https://github.com/user-attachments/assets/7dfe5353-6ff9-4394-ac59-5f7cabe319c9)
 
-### Step 2. 
+### Step 2. Create input
+Create inputs.conf file to monitor the file (This will help Splunk to understand what file Splunk needs to monitor 
+command:
+- cd /var/log
+- ls -la
+- cd /opt/splunkforwarder/etc/apps/search
+- ls -la
+- cd /opt/splunkforwarder/etc/apps/search/local create input in local
+- mkdir local
+- vi inputs.conf
+- - [monitor:///var/log/syslog]
+  - disabled = 0
+  - index = splunkdemo2: to edit, press i to insert, and to save:wq enter.
+  - Note: Create index name Splunkdemo2. Log in to Splunk as Admin, Settings, New Index and fill out form by giving it only a Name Splunkdemo2 Save.
+
+![image](https://github.com/user-attachments/assets/725a0434-d897-4734-8fd2-50bb4aa9f6fd)
+
+![image](https://github.com/user-attachments/assets/3dd77093-6b10-47ae-9a88-704f0ada11fd)
+
+![image](https://github.com/user-attachments/assets/94da4c1c-b2e0-4b6f-9f9c-4e4af82a1db1)
+
+![image](https://github.com/user-attachments/assets/2b17e7fe-d55a-4f85-adb8-d8c1cb4431b7)
+
+![image](https://github.com/user-attachments/assets/ed517624-b2ad-4c71-8aa6-6fc71a414b97)
+
+![image](https://github.com/user-attachments/assets/c5e2dc11-e0f7-474c-90de-148c0d8e3e0b)
+
+### Step 2. Create input
+Create inputs.conf This will help Splunk to understand where to send data. now we have to tell our forwarder to send our capture data.
+- vi outputs.conf
+- - [tcpout]
+  - defaultGroup=my_indexers
+ 
+  - [tcpout:my_indexers]
+  - server=3.17.109.107:9997
+  - [tcpout-server://3.17.109.107:9997] to edit, press i to insert, and to save:wq enter.
+  - Note: 9997 is the port to communicate through; we have to let Splunk receive from port 9997.
+  - Go to Splunk Homepage, Settings, click on Forwarding/receiving, New receiving port, and type 9997, and click on save.
+  - Restart Splunk service on both servers, and to do that,t we have to change the Directory cd /opt/splunkforwarder/bin/ and ./splunk restart
+
+![image](https://github.com/user-attachments/assets/228d5da8-3e10-4910-addf-60af02f93c46)
+
+![image](https://github.com/user-attachments/assets/7923cbfb-af06-4652-bc4b-06d30e0e0e50)
+
+![image](https://github.com/user-attachments/assets/c1ad7c7d-f34d-412a-b663-e95759e1e1d1)
+
+![image](https://github.com/user-attachments/assets/4144d5e9-1ca4-43fc-a305-d48906627d92)
+
+![image](https://github.com/user-attachments/assets/d8a452ff-1f2d-4fc0-83ff-c20f772d4751)
+
+![image](https://github.com/user-attachments/assets/8bf537ca-9eb4-40aa-a1fa-1fa5a03ab8bc)
+
+![image](https://github.com/user-attachments/assets/c16124db-8252-4e33-a9f6-c55bccc02bf1)
+
