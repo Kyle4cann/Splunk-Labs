@@ -1,38 +1,36 @@
-# Securing-Infrastructure-LAB
-### NAME: VINCENT CANN.
-### STUDENT ID: 4381913
-### COURSE: CYBS 1007 SECURING INFRASTRUCTURE.
+# Splunk Labs 1
 
+### Objectives:
 
-## Lab 1 Part 1: Create AWS account. 
+## Part 1: Create an AWS account. 
 
 ### Step 1. 
-- open https://aws.amazon.com/console/ in your browser
-- click on account and AWS management console
-- click on Create a new AWS Account
-- Fill in: Root user email address and AWS account name the click of verify email address
-- Open your mail to verify account
+- Open https://aws.amazon.com/console/ in your browser
+- Click on the account and the AWS management console
+- Click on Create a new AWS Account
+- Fill in: Root user email address and AWS account name, the click verify email address
+- Open your mail to verify your account
 ### Step 2.
-- open https://aws.amazon.com/console/ in your browser
-- click on account AWS management console
+- Open https://aws.amazon.com/console/ in your browser
+- Click on the account AWS management console
 - Click on Sign in using root user email
-- Enter Email, the characters given to you click on i'm not a roboot to enter password to login
+- Enter your Email, the characters given to you, click on I'm not a robot, to enter your  password to log in
 ### Step 3:
-- At the search buttom type ES2 and click on Instances
+- At the search button, type ES2 and click on Instances
 - Click on Launch an instance
-- Enter Fill out or configure your server
+- Enter, fill out, or configure your server
 - ### Notes:
 - - Enter Name
-  - Select Ubuntu under Application and OS Image: Slpunk is very compartible with ubuntu because it liter
-  - For splunk to run smoothly its requires minimum of 2gig Virture CPU and 4gb Memory So select T3 meduim
+  - Select Ubuntu under Application and OS Image: Slpunk is very compatible with Ubuntu because it is liter
+  - For Splunk to run smoothly, it requires a minimum of 2 gig Virtual CPU and 4 GB of Memory. So, select T3 medium
   - Click Key Pair to create Key Pair (SplunkTest )
-  - Under security Group select Allow All.
-  - Change storage to 30gb Because you eligible to use up to 30gb
-- Now click on Launch instance to create  Instance Called (KyleTech)
+  - Under Security Group, select Allow All.
+  - Change storage to 30 GB because you are  eligible to use up to 30 GB
+- Now click on Launch instance to create an   Instance Called (KyleTech)
 ### Step 4:
-- Check Instance Box and click on connect
+- Check the Instance Box and click on connect
 - ### Note:
-  Its will locate you to a terminal page.
+  It will redirect you to a terminal page.
 
 ![image](https://github.com/user-attachments/assets/a0eead7b-e6ae-42b9-b235-ff91cd0fd7cd)
 Screenshot 1.
@@ -52,7 +50,7 @@ Screenshot 5.
 ![image](https://github.com/user-attachments/assets/9af73564-4b6c-4e46-8826-43fd8bbba8a2)
 Screenshot 6.
 
-## Part 2 Installing Splunk on Ubuntu Server Created on AWS
+## Part 2: Installing Splunk on Ubuntu Server Created on AWS
 
 ### Step 1.
 - Open https://www.splunk.com/ in any browser
@@ -228,9 +226,9 @@ Screenshot 15
 ![image](https://github.com/user-attachments/assets/e1fa8818-3490-465e-97bd-576dc241f59b)
 Screenshot 16
 
-### Part 5. Splunk Processing Language.
-SPL: Splunk Processing Language is used to search and retrieve stored data (Playing arround Fields and creating Visualization)
-### Step 1. Adding to Index
+### Part 5: Splunk Processing Language.
+SPL: Splunk Processing Language is used to search and retrieve stored data (Playing around with Fields and creating Visualization)
+### Step 1. Adding to the Index
 - Under Search type index= index name eg index="_internal"
 - Add Host IP
 - Add Source (Matrix)
@@ -250,23 +248,70 @@ This enhances searching
 - Copy and paste the Search History and click Add Dashboard
 
 ![image](https://github.com/user-attachments/assets/07ea85df-4398-44cf-9281-e7d2f9226073)
+Screenshot 1.
 
 ![image](https://github.com/user-attachments/assets/1d5b0e8b-018d-4022-baac-6acf1fa98dc2)
+Screenshot 2.
 
 ![image](https://github.com/user-attachments/assets/067bdc29-c082-4e17-8abc-1fdc50e7f656)
+Screenshot 3.
 
 ![image](https://github.com/user-attachments/assets/d6e26efc-92d4-4ee3-bd19-9c4d41a14090)
+Screenshot 4.
 
 ![image](https://github.com/user-attachments/assets/357b5497-0c38-4553-a8ff-4646503ee3c7)
+Screenshot 5.
 
 ![image](https://github.com/user-attachments/assets/b01644f5-488f-4eed-9fae-fc63bcd7343a)
+Screenshot 6.
 
 ![image](https://github.com/user-attachments/assets/c7da3c3f-476a-4719-b60b-31fd701b9d6f)
+Screenshot 7.
 
 ![image](https://github.com/user-attachments/assets/a6771375-29c9-4758-bddd-b1d0c5923f5c)
+Screenshot 8.
 
 ![image](https://github.com/user-attachments/assets/ae8c94cf-3b0e-4a5a-906d-96f9aef70cb9)
+Screenshot 9.
 
+## Part 6: HANDLING DATA AND CONCEPTS OF BASIC FORWARDING
+#### Splunk Forwarder is an agent installed on a server to capture or monitor certain files (log files)
+- Data Input: What file to monitor
+- Data Parsing: Converting Unstructured and Semi-structured data into a structured format.
+- Data Indexing: Storing or ingeting data.
+- Data Searching: Visualising Data
 
+### Step 1. How to Install Splunk Forwarder
+### Note: 
+Install a universal Forwarder on another server and make sure the Splunk service is running. 
+- In this case, follow Part 1, step 3 to step 4.
+- Visit the Splunk webpage and click on Get My Free Download under Universal Forwarder
+- Select Linux 64-bit, .deb, and copy the  link
 
+### Step 1a. Commads
+- sudo su
+- cd /opt/
+- Paste link here:
+- ls
+- Extract downloaded file: dpky -i splunkforwarder-9.4.2......
+- ls
+- change directory: cd splunkforwarder/bin/
+- Start splankforwarder: ./splunk start --accept-licence --answer-yes.
+  In case there is an error run these commands:
+  - sudo systemctl daemon-reload
+  - sudo systemctl restart splunkforwarder.service
+  - ./restart.
 
+![image](https://github.com/user-attachments/assets/2cb9d198-1bf3-4459-bc08-7e68917b629f)
+
+![image](https://github.com/user-attachments/assets/ddbee8bc-b18f-4646-b236-64cc552bb224)
+
+![image](https://github.com/user-attachments/assets/72314c5b-fb93-4328-8f28-eee7cb534aa5)
+
+![image](https://github.com/user-attachments/assets/fcca27e9-a9e5-4d8b-b73c-06902ef4bebb)
+
+![image](https://github.com/user-attachments/assets/4d3634ea-afd9-44d2-8f86-fc725d61941b)
+
+![image](https://github.com/user-attachments/assets/7dfe5353-6ff9-4394-ac59-5f7cabe319c9)
+
+### Step 2. 
