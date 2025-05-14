@@ -1,4 +1,4 @@
-# Securing-Infrastructure-LAB1
+# Securing-Infrastructure-LAB
 ### NAME: VINCENT CANN.
 ### STUDENT ID: 4381913
 ### COURSE: CYBS 1007 SECURING INFRASTRUCTURE.
@@ -6,155 +6,245 @@
 
 ## Lab 1 Part 1: Create AWS account. 
 
-### 1. Configure DNS Agent to use DNS Over HTTP on your Windows VM.
+### Step 1. 
 - open https://aws.amazon.com/console/ in your browser
-- click on AWS management console
+- click on account and AWS management console
 - click on Create a new AWS Account
 - Fill in: Root user email address and AWS account name the click of verify email address
 - Open your mail to verify account
+### Step 2.
+- open https://aws.amazon.com/console/ in your browser
+- click on account AWS management console
+- Click on Sign in using root user email
+- Enter Email, the characters given to you click on i'm not a roboot to enter password to login
+### Step 3:
+- At the search buttom type ES2 and click on Instances
+- Click on Launch an instance
+- Enter Fill out or configure your server
+- ### Notes:
+- - Enter Name
+  - Select Ubuntu under Application and OS Image: Slpunk is very compartible with ubuntu because it liter
+  - For splunk to run smoothly its requires minimum of 2gig Virture CPU and 4gb Memory So select T3 meduim
+  - Click Key Pair to create Key Pair (SplunkTest )
+  - Under security Group select Allow All.
+  - Change storage to 30gb Because you eligible to use up to 30gb
+- Now click on Launch instance to create  Instance Called (KyleTech)
+### Step 4:
+- Check Instance Box and click on connect
+- ### Note:
+  Its will locate you to a terminal page.
+
+![image](https://github.com/user-attachments/assets/a0eead7b-e6ae-42b9-b235-ff91cd0fd7cd)
+Screenshot 1.
+
+![image](https://github.com/user-attachments/assets/0c588114-09ec-453b-bef0-7b4b18fcffc5)
+Screenshot 2.
+
+![image](https://github.com/user-attachments/assets/7950b198-024f-44e7-b61e-a674c4a60aff)
+Screenshot 3.
+
+![image](https://github.com/user-attachments/assets/25f83a11-ed78-485b-af0f-3d1a9e1e5440)
+Screenshot 4.
+
+![image](https://github.com/user-attachments/assets/b80bf878-1d7d-44a5-9415-55668e360fc4)
+Screenshot 5.
+
+![image](https://github.com/user-attachments/assets/9af73564-4b6c-4e46-8826-43fd8bbba8a2)
+Screenshot 6.
+
+## Part 2 Installing Splunk on Ubuntu Server Created on AWS
+
+### Step 1.
+- Open https://www.splunk.com/ in any browser
+- Click on Products
+- Free Trials and Downloads
+- Click on Splunk Enterprise (Get My Free Trial)
+- Create an account to download free
+- Choose Your Preferred OS thats Linux
+- Copy .deb link: wget -O splunk-9.4.2-e9664af3d956-linux-amd64.deb "https://download.splunk.com/products/splunk/releases/9.4.2/linux/splunk-9.4.2-e9664af3d956-linux-amd64.deb"
+
+### Step 2.
+- Go back to you Ubuntu Server to install Splunl
+- ### Terminal Commands:
+- - Sudo su ( To root user)
+  - cd /opt ( To the Directory of Splunk installation)
+  - Copy and Paste the link
+  - ls ( To View file downloader to the Director)
+  - dpkg -i splunk-9.4.2-e9664af3d956-linux-amd64.deb (To extract files to splunt default folder)
+  - sudo su splunk (to move root to splunk directory)
+  - cd splunk/bin
+  - ./splunk start --accept-license --answer-yes
+  - Enter Username
+  - Enter Password
+  - We will get our IP: as http://172.31.21.104:8000
+    
+ ### Step 3. Allowing Port
+ - Go to AWS under Instance created and copy the Public ip address paste in your url as shown: 3.17.109.107:8000 
+  - #### Note:
+    Its will not connect because in setting up our instance, we only allowed 3 ports and splunk runs on port number: 8000
+- Click on Instance Name
+- Security, Security Group, Open link in new tab, Edith Inbond Rules Add Rules, Custom IP 8000, and allowing forward enter 0.0.0.0/0 , Change Custom TCT to All Trafic for study purpose
+- Click Save Rules
+- Now we go back to refresh our splunk login page:
+
+![image](https://github.com/user-attachments/assets/3e22abbe-a1a5-4f48-8243-f5f81d684046)
+Screenshot  1.
+
+![image](https://github.com/user-attachments/assets/c4212ba4-bd25-4032-9050-b76750b2ecde)
+Screenshot 2.
+
+![image](https://github.com/user-attachments/assets/91205965-035c-4679-a90a-34d631917964)
+Screenshot 3.
+
+![image](https://github.com/user-attachments/assets/5d6346ac-5a39-4149-a2da-2b64d10d82ce)
+Screenshot 4.
+
+![image](https://github.com/user-attachments/assets/0ee250cd-7c26-4755-a522-a83b2e3be86e)
+Screenshot 5.
+
+### Allowing Port
+
+![image](https://github.com/user-attachments/assets/695c081c-53c5-432c-be92-d19747126df9)
+Screenshot 1
+
+![image](https://github.com/user-attachments/assets/f68f5efb-8608-4e38-ad00-6ded01412a36)
+Screenshot 2.
+
+![image](https://github.com/user-attachments/assets/ef9c80e7-5ef2-4772-af28-b92764ae7224)
+Screenshot 3.
+
+![image](https://github.com/user-attachments/assets/e9e38d3b-7ffa-4fdc-a575-74ff820628f1)
+Screenshot 4.
+
+![image](https://github.com/user-attachments/assets/0ee250cd-7c26-4755-a522-a83b2e3be86e)
+Screenshot 5.
+
+![image](https://github.com/user-attachments/assets/1c25bfb0-554e-4832-a158-2341fac70818)
+Screenshot 6. Splunk HomePage
 
 
-![image](https://github.com/user-attachments/assets/a458f12c-d091-4340-af1c-6dd447958907) 
-Screenshot for Windows
 
-### 2. Configure DNS Agent to use DNS Over HTTP on your Linux VM.
-![image](https://github.com/user-attachments/assets/e32c4c72-a023-4996-b5b5-59ec2ca00306)
-Screenshot for Linux
+## Part 3: Creating user in Splunk
+### Step 1
+- Lick on Settings and go to Users
+- Click New Users and Fill out the Form
+- Name and Password
+- Check Power under Assign Roles and click the arrow between Available and Selected items
+- check Require password change and click Create
+- Now logout from Admin and login with new user name and password (You will be Prompt to change password.
 
-### 3. Install DNS Server on your Windows VM, config it to use DNSSEC and connect to Google DNS Server. Obtain results from nslookup.
-![image](https://github.com/user-attachments/assets/df06dd68-acac-4a36-8bcd-b5adc75e318b)
-![image](https://github.com/user-attachments/assets/b062a35e-07c2-4368-bf10-486ccc292dca)  
-Screenshot nslookup for Windows  
+![image](https://github.com/user-attachments/assets/feae1ed2-f188-48e2-8c27-352dc2ed35b5)
+Screenshot 1.
 
-### 4.  Install DNS Server on your LINUX VMs, config it to use DNSSEC and connect to Google DNS Server. Obtain results from nsLookup.
-![image](https://github.com/user-attachments/assets/c10f018f-244b-401f-97be-c480184140df)
-Screenshot nslookup for Linux
+![image](https://github.com/user-attachments/assets/749b6639-cd0b-4009-9653-abf60f136c0f)
+Screenshot 2.
 
-### 5. Install DHCP on your Windows VM. 
-![image](https://github.com/user-attachments/assets/5f02f9ae-f70a-4465-98e4-839862b98f22)
-Screenshot of the Windows DHCP configuration file.
+![image](https://github.com/user-attachments/assets/cca727fa-3b9d-429e-a61f-dd9d99b48f07)
+Screenshot 3.
 
-### 6. Install DHCP on your Linux VM.
-![image](https://github.com/user-attachments/assets/26cabb3d-5594-47bf-b38d-97c9e4307ece)
-Configure the DHCP Server
- 
-Add the following lines to the dhcpd.conf file. Replace 192.168.1.0 with your VMs network address, and 192.168.1.10 192.168.1.50 with your desired IP address range:
-  subnet 192.168.1.0 netmask 255.255.255.0 {
-  range 192.168.1.10 192.168.1.50;
-  option domain-name-servers ns1.example.org, ns2.example.org;
-  option domain-name "example.org";
- 		 option routers 192.168.1.1;
- 		 option broadcast-address 192.168.1.255;
- 		 default-lease-time 600;
- 		 max-lease-time 7200;
-}
+![image](https://github.com/user-attachments/assets/cfe9de8f-0c27-463e-a86e-e762c762b927)
+Screenshot 4.
 
-Save and close the file.
-Restart the DHCP Server
-Verify the DHCP Server
-### Question: What devices/endpoints must have a static IP Address? 
-### ANSWER: 
-Some network devices and endpoints should always have a static IP address to ensure stability and reliability. These include:
-### 1.	Network Infrastructure Devices
--	Routers & Gateways" They manage network traffic, so changing their IP could disrupt connectivity.
--	Switches (Managed): If they support remote management, they need a fixed IP for configuration access.
--	Firewalls: To ensure proper security enforcement and rule application.
-### 2.	Servers
--	DNS Servers: A static IP prevents network-wide DNS resolution failures.
--	DHCP Servers: If DHCP had a dynamic IP, clients wouldn’t always find it.
--	Web Servers: Hosting websites requires a consistent address for domain resolution.
--	File & Database Servers: Clients need a stable connection to access resources.
--	Mail Servers: Ensures mail delivery without disruptions.
--	Active Directory Domain Controllers: Essential for network authentication.
-### 3.	Networked Devices
--	Printers: Ensures that users can always find and print to them.
--	CCTV Cameras: For stable monitoring and remote access.
--	VoIP Phones: To avoid call interruptions or dropped connections.
-### 4.	Special Use Devices
--	VPN Servers: Provides remote access without frequent configuration changes.
--	IoT Devices (Smart Security Systems, Automation Controllers, etc.): Ensures seamless operation.
-  
-### Question: How would you assign these static IP hosts in the dhcp.conf file?
-![image](https://github.com/user-attachments/assets/1570bd1f-8a41-407a-a92e-078666a23383)
-Screenshot of the Linux DHCP configuration file and that the DHCP server is running.
+![image](https://github.com/user-attachments/assets/47ab79df-cffd-4b7c-b078-8584cac8434f)
+Screenshot 5.
 
-## Lab1  Part 2: System Hardening
-### 1.   Watch the youtube videos in slide deck for installing a PXE server on Windows and Linux.
-Question(s): What is the main benefit of PXE?
-PXE Explained: PreBoot Execution Environment, how to deploy an operating system. – YouTube
-PXE WDS windows server 2019 - YouTube
-### ANSWER: 
-PXE (Preboot Execution Environment) allows computers to boot from a network without needing local storage (hard drive, USB, or CD/DVD).
-### The main Benefits:
--	Automated OS Deployment: Quickly install operating systems on multiple machines over the network.
--	No Need for Boot Media: Eliminates the need for USBs or DVDs to install OS.
--	Centralized Management: IT teams can manage and update systems remotely.
--	Faster System Recovery: Easily reinstall or repair OS in case of system failure.
-### Scalability 
-- Ideal for setting up large numbers of computers (e.g., in enterprises, schools, or data centers).
+![image](https://github.com/user-attachments/assets/0858b7e9-9fc6-443b-8a65-adf68f2d34cb)
+Screenshot 6.
 
-### 2. Install and configure Microsoft Windows Deployment Services from the Server Manager on Windows. Configure MDS as a standalone server with not installing images at this time.
- ![image](https://github.com/user-attachments/assets/916d5f0f-9830-456c-aa6d-b59e62e1342f)
-![image](https://github.com/user-attachments/assets/e0e79fbf-6269-472f-88c0-b5243750c6a9)
-Take a screenshot of the Install Images folder from within WDS
+![image](https://github.com/user-attachments/assets/ce20799d-665a-46e7-921b-96001ef32ec3)
 
-### Question(s): What should go in here?
-### ANSWER: 
-The Install Images folder in Windows Deployment Services (WDS) stores the operating system installation files used for deploying Windows to client computers via PXE boot.
-What Goes in the Install Images Folder?
--	Windows Installation Images (.WIM files): These files, typically extracted from a Windows ISO (sources\install.wim), contain the operating system setup.
--	Custom Captured Images: If deploying a pre-configured system, custom .WIM images captured from existing installations can be added.
--	Multiple OS Versions: The folder can store various Windows versions (e.g., Windows 10, Windows 11, Windows Server 2022) to support different deployment needs.
+Screenshot 7.
 
-### 3.   Download and view both a Windows and Linux benchmark from CIS.  
-The CIS link is in the slide deck (Benchmarks). You will have to register with an email address.
-Review the contents and provide an example network setting safeguard from CIS Control 13
+### Part 4. Indexing Static Data And Searching.
+### Step 1. Download CSV File
+- Open any Browser go to google and search CSV file download
+- Select toolsfairy and Download CSV file
+### Step 2 Add Downloaded CSV File (Select Source)
+- Login to Splunk Home Page
+- Click on Add data
+- Click on Upload
+- Select File Sample-CSV-file
+- Click Open to load file
+- ### Note: Under Set Source Type
+- If Timestamp is not showing Enable by:
+- - Click on Timestamp
+  - Select  Current and Save
+- ### Under Input Settings
+- Click on Create a new index
+- Name it Splunkdemo and Save
+- Select Splunkdemo
+- Review and Submit
+### Step 3. Searching
+- Click on Start Searching
+- In New Search type index="Splunkdemo" to load Static File
+- Select All time set time to prefferred time frame and press enter to search
+- 
 
-### Question(s): Should you use them? Which Level are you comfortable using?
-The safeguard in your screenshot is related to encrypting sensitive data at rest (CIS Control 3.11) and encrypting or hashing all authentication credentials (CIS Control 16.4).
-An example network setting safeguard from CIS Control 13 is:
-### ANSWER:
-Ensure 'Prohibit use of Internet Connection Sharing on your DNS domain network' is set to 'Enabled'
--	Profile Applicability: Level 1 - Domain Controller, Level 1 - Member Server
--	Description: This setting prevents unauthorized users from turning on Internet Connection Sharing (ICS), which could expose internal network resources to external devices.
--	Rationale: Preventing ICS ensures that end-users cannot unintentionally or maliciously share their internet connection, reducing attack vectors.
--	Remediation: Configure the following Group Policy setting:
--	Computer Configuration\Policies\Administrative Templates\Network\Network Connections\Prohibit use of Internet Connection Sharing on your DNS domain network
--	Recommended Value: Enabled.
-Should you use CIS Benchmarks?
-### ANSWER: 
-Yes, you should use them, as they provide industry-recognized security best practices that help reduce vulnerabilities and enhance network security.
-Which Level should you use?
-### ANSWER:
--	Level 1: Basic security that balances usability and security. Suitable for general enterprise environments.
--	Level 2: More restrictive settings for high-security environments.
-If you prioritize security over usability and are working in a highly sensitive environment, Level 2 is preferable. Otherwise, Level 1 is a good baseline.
+![image](https://github.com/user-attachments/assets/342a4336-b04d-4992-814f-4a5019b0d176)
+Screenshot 1.
 
-![image](https://github.com/user-attachments/assets/90f0b690-19ee-4035-9bd9-23a3dd4ffac2)
-Linux Safeguard Screenshot:  
+![image](https://github.com/user-attachments/assets/6d581f00-e112-4157-91f5-f2d61eae23e9)
+Screenshot 2.
 
-### Safeguard: Implement Network-Based Intrusion Detection Systems (NIDS)
-### Description: 
-Deploy a network-based intrusion detection system (NIDS) to monitor network traffic for malicious activity.
-### Rationale: 
-Helps detect unauthorized access, malware, and unusual network behaviors before they cause harm.
-### Implementation: 
-Use tools like Snort, Suricata, or Zeek to analyze network traffic.
+![image](https://github.com/user-attachments/assets/96c1b5ea-878d-4ebc-8f55-16a7c6cdc541)
+Screenshot 3.
 
-![image](https://github.com/user-attachments/assets/6063e93a-9a9c-4667-88c4-0eba345a7eb7)
-Windows Safeguard Screenshot:
+![image](https://github.com/user-attachments/assets/01cea488-65f7-4394-b201-5d2353ff2604)
+Screenshot 4.
 
-### 4.   Download the DOD STIG for Windows 2022 Server
-Goto DOD STIP website in the slide deck. Security Technical Implementation Guides (STIGs) – DoD Cyber Exchange
-Look for:   DoD WinSvr 2022 MS and DC v1r4/Reports/
-Look for and open the report: DoD WinSvr 2022 MS STIG Comp v1r4.html
-Open Account Policies/Password Policies
-### What is the minimum password length?
-### ANSWER: 
-14 characters minimum. 
-![image](https://github.com/user-attachments/assets/daf47e41-dde0-4e66-8dd5-885ff8cb0932)
-Take screenshot of the STIG
+![image](https://github.com/user-attachments/assets/528977d1-03af-4a5f-b322-d8a26d01f43c)
+Screenshot 5.
 
-### Question(s): Would you use these STIGs? Why & Why not?
-### ANSWER: 
-Yes, I would use DoD STIGs (Security Technical Implementation Guides) because they establish stringent security configurations that enhance system protection, ensure compliance with frameworks like NIST and CIS, and reduce cyber risks through strong password policies, access controls, and network security measures. They are especially valuable in high-security environments such as government and enterprise systems. However, STIGs can be complex to implement, overly restrictive, and may affect usability, making them less suitable for smaller organizations or general-purpose systems. While they are crucial for securing critical infrastructure, a more balanced approach—such as CIS Level 1 Benchmarks—might be better suited for environments that need to balance security with usability.
+![image](https://github.com/user-attachments/assets/869d1c74-48b5-4284-8690-894e2e1c14c4)
+Screenshot 6.
+
+![image](https://github.com/user-attachments/assets/915031a8-6346-467a-81ef-a1c11be2f670)
+Screenshot 7.
+
+![image](https://github.com/user-attachments/assets/cd640d5e-aeda-4bc4-8f7d-d262ba1e85fd)
+Screenshot 8.
+
+![image](https://github.com/user-attachments/assets/48b761c2-51e5-4c07-a0f5-7e5ed471d26d)
+Screenshot 9.
+
+![image](https://github.com/user-attachments/assets/2f4857c8-35ba-42e8-a39d-ac061c9a2a61)
+Screenshot 10
+
+![image](https://github.com/user-attachments/assets/b0b47c40-6479-46ad-8760-5e2c2a51482c)
+Screenshot 11
+
+![image](https://github.com/user-attachments/assets/96e6a32c-6aa0-4e3e-88e6-83d108f3164e)
+Screenshot 12
+
+![image](https://github.com/user-attachments/assets/0fdc27b6-9bdc-4134-a496-0902c2a84120)
+Screenshot 13
+
+![image](https://github.com/user-attachments/assets/844ddbbd-e033-4514-ab4f-d1d205cee2d4)
+Screenshot 14
+
+![image](https://github.com/user-attachments/assets/07271876-0072-44e7-a2c5-808643d3482a)
+Screenshot 15
+
+![image](https://github.com/user-attachments/assets/e1fa8818-3490-465e-97bd-576dc241f59b)
+Screenshot 16
+
+### Part 5. Splunk Processing Language.
+SPL: Splunk Processing Language is used to search and retrieve stored data (Playing arround Fields and creating Visualization)
+### Step 1. Adding to Index
+- Under Search type index= index name eg index="_internal"
+- Add Host IP
+- Add Source (Matrix)
+- Add Source Type (Splunkd)
+### Step 2. Modify timestamp
+This enhance searching 
+- Earliest Field (earliest= -15m@m) this means that i want to search data for the first 15mis
+- Lastest Field (latest= -1m@m) Mean search data for last minute
+### Step 3. Graphs
+- Stats convert to Table
+- Chart Convert to Graph on X and Y Axiss
+- Time Chart convert to graph on Time Note: before transforming you will need PY (|) followed by command eg. index="_internal" | Stats Count by group., | Chart count by name., | Time Chart by Series
+### Step 4. Creating Dashboard
+- Click Edit from hopepage
+- Add Panel
+- Select preferred Chart
+- 
