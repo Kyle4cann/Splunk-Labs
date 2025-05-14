@@ -341,7 +341,7 @@ command:
 
 ![image](https://github.com/user-attachments/assets/c5e2dc11-e0f7-474c-90de-148c0d8e3e0b)
 
-### Step 2. Create input
+### Step 3. Create input
 Create inputs.conf This will help Splunk to understand where to send data. now we have to tell our forwarder to send our capture data.
 - vi outputs.conf
 - - [tcpout]
