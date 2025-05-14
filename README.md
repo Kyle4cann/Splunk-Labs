@@ -368,3 +368,14 @@ Create inputs.conf This will help Splunk to understand where to send data. now w
 
 ![image](https://github.com/user-attachments/assets/c16124db-8252-4e33-a9f6-c55bccc02bf1)
 
+### Step 4. Monitoring and Capturing SplunkForwarder logs
+- Go to your instance page and run the KyleTechForwarder instance
+- Launch KyleTech instance
+- Log in to splunk Admin page and log in
+- Go to Search, type index="Splunkdemo2", enter (
+
+![image](https://github.com/user-attachments/assets/7b4016c9-862b-432e-93b1-e423ae57c09d)
+
+![image](https://github.com/user-attachments/assets/b4a82b92-80d7-4319-a02a-d81135768efa)
+
+![image](https://github.com/user-attachments/assets/4e1642b4-79eb-47a8-8f3d-dfcf52a9f91e)
