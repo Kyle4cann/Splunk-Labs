@@ -236,15 +236,37 @@ SPL: Splunk Processing Language is used to search and retrieve stored data (Play
 - Add Source (Matrix)
 - Add Source Type (Splunkd)
 ### Step 2. Modify timestamp
-This enhance searching 
-- Earliest Field (earliest= -15m@m) this means that i want to search data for the first 15mis
-- Lastest Field (latest= -1m@m) Mean search data for last minute
+This enhances searching 
+- Earliest Field (earliest= -15m@m), this means that i want to search data for the first 15 minutes
+- Latest Field (latest= -1m@m) Mean search data for last minute
 ### Step 3. Graphs
 - Stats convert to Table
-- Chart Convert to Graph on X and Y Axiss
-- Time Chart convert to graph on Time Note: before transforming you will need PY (|) followed by command eg. index="_internal" | Stats Count by group., | Chart count by name., | Time Chart by Series
+- Chart Convert to Graph on X and Y Axis
+- Time Chart convert to graph on Time Note: before transforming, you will need PY (|) followed by command eg, index="_internal" | Stats Count by group., | Chart count by name., | Time Chart by Series
 ### Step 4. Creating Dashboard
-- Click Edit from hopepage
+- Click Edit from the homepage
 - Add Panel
 - Select preferred Chart
-- 
+- Copy and paste the Search History and click Add Dashboard
+
+![image](https://github.com/user-attachments/assets/07ea85df-4398-44cf-9281-e7d2f9226073)
+
+![image](https://github.com/user-attachments/assets/1d5b0e8b-018d-4022-baac-6acf1fa98dc2)
+
+![image](https://github.com/user-attachments/assets/067bdc29-c082-4e17-8abc-1fdc50e7f656)
+
+![image](https://github.com/user-attachments/assets/d6e26efc-92d4-4ee3-bd19-9c4d41a14090)
+
+![image](https://github.com/user-attachments/assets/357b5497-0c38-4553-a8ff-4646503ee3c7)
+
+![image](https://github.com/user-attachments/assets/b01644f5-488f-4eed-9fae-fc63bcd7343a)
+
+![image](https://github.com/user-attachments/assets/c7da3c3f-476a-4719-b60b-31fd701b9d6f)
+
+![image](https://github.com/user-attachments/assets/a6771375-29c9-4758-bddd-b1d0c5923f5c)
+
+![image](https://github.com/user-attachments/assets/ae8c94cf-3b0e-4a5a-906d-96f9aef70cb9)
+
+
+
+
