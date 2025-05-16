@@ -370,8 +370,8 @@ Create inputs.conf This will help Splunk to understand where to send data. now w
 
 ### Step 4. Monitoring and Capturing SplunkForwarder Logs
 - Go to your instance page and run the KyleTechForwarder instance
-- Launch KyleTech instance
-- Log in to splunk Admin page and log in
+- Launch the KyleTech instance
+- Log in to the Splunk Admin page and log in
 - Go to Search, type index="Splunkdemo2", enter 
 
 ![image](https://github.com/user-attachments/assets/7b4016c9-862b-432e-93b1-e423ae57c09d)
@@ -381,13 +381,26 @@ Create inputs.conf This will help Splunk to understand where to send data. now w
 ![image](https://github.com/user-attachments/assets/4e1642b4-79eb-47a8-8f3d-dfcf52a9f91e)
 
 ## Part 6: SPLUNK INTEGRATION WITH AWS
-### Step 1. Login to Splunk 
+### Step 1. Log in to Splunk 
 - Go to splunk.com and log in
 - Click on Products
 - Free trials and Downloads
 - Universal Forwarder
 - click Download under 64 Bit Windows 10, 11, Server, 2022
 
+### Step 2. Create an Instance in the AWS S3 Buckets
+Note: Authentication (AWS Access key / Secret key) Splunk needs AWS Authentication key to access AWS logs/data, so we have to enable some services in AWS.
+- - Create S3 Buckets
+  - Go to AWS console and log in
+  - Under search type S3
+  - Click on S3 (Scalable storage in the cloud)
+  - Click create Bucket
+  - -  Fill out the Following:
+    -  Name: kylebucket7958
+    -  Object Ownership: Default (ACLs Disabled)
+    -  Block Public Access: uncheck block all access and check I Acknowledge ...
+    -  Note: Leave the remaining of the setting and under the Bucket key check Disable and Scroll downn and click Create Bucket
+    
+    
 
-- 
 
