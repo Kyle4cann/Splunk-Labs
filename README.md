@@ -349,10 +349,10 @@ Create inputs.conf This will help Splunk to understand where to send data. now w
  
   - [tcpout:my_indexers]
   - server=3.17.109.107:9997
-  - [tcpout-server://3.17.109.107:9997] to edit, press i to insert, and to save:wq enter.
-  - Note: 9997 is the port to communicate through; we have to let Splunk receive from port 9997.
-  - Go to Splunk Homepage, Settings, click on Forwarding/receiving, New receiving port, and type 9997, and click on save.
-  - Restart Splunk service on both servers, and to do that,t we have to change the Directory cd /opt/splunkforwarder/bin/ and ./splunk restart
+  - [tcpout-server://3.17.109.107:9997] to edit, press i to insert, and to save  :wq enter.
+  - Note: 9997 is the port to communicate through; we must let Splunk receive from port 9997.
+  - Go to Splunk Homepage, Settings, click on Forwarding/receiving, New receiving port, type 9997, and click on save.
+  - Restart Splunk service on both servers, and to do that, we have to change the Directory cd /opt/splunkforwarder/bin/ and ./splunk restart
 
 ![image](https://github.com/user-attachments/assets/228d5da8-3e10-4910-addf-60af02f93c46)
 
@@ -368,14 +368,26 @@ Create inputs.conf This will help Splunk to understand where to send data. now w
 
 ![image](https://github.com/user-attachments/assets/c16124db-8252-4e33-a9f6-c55bccc02bf1)
 
-### Step 4. Monitoring and Capturing SplunkForwarder logs
+### Step 4. Monitoring and Capturing SplunkForwarder Logs
 - Go to your instance page and run the KyleTechForwarder instance
 - Launch KyleTech instance
 - Log in to splunk Admin page and log in
-- Go to Search, type index="Splunkdemo2", enter (
+- Go to Search, type index="Splunkdemo2", enter 
 
 ![image](https://github.com/user-attachments/assets/7b4016c9-862b-432e-93b1-e423ae57c09d)
 
 ![image](https://github.com/user-attachments/assets/b4a82b92-80d7-4319-a02a-d81135768efa)
 
 ![image](https://github.com/user-attachments/assets/4e1642b4-79eb-47a8-8f3d-dfcf52a9f91e)
+
+## Part 6: SPLUNK INTEGRATION WITH AWS
+### Step 1. Login to Splunk 
+- Go to splunk.com and log in
+- Click on Products
+- Free trials and Downloads
+- Universal Forwarder
+- click Download under 64 Bit Windows 10, 11, Server, 2022
+
+
+- 
+
