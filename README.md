@@ -483,25 +483,25 @@ Note: Authentication (AWS Access key / Secret key) Splunk needs `AWS Authenticat
   - Source Type: AWS:`S3`
   - Index: `AWScap` and Click on `ADD` to Add
 
-### Step 7. Upload Any CSV File on S3 Bucket
-- Open S3 bucket in a different Browser
-- Locate your S3 name: kylebucket7958 Click on the name
-- Click Upload
-- Click add file
-- Locate our CSV file used from the beginning of this Lab, select add and click on Upload
-- - Note: Now Splunk will go to AWS and ask for data from S3 Bucket because we created an input around, that splunk will ask AWS to share that data with,
-  - So AWS will request for (Authentication key before allowing spluck to access the data)
-  - Then Spluck will give Authentication key, which was provided in the cost off creating the account
-  - And then Spluck will logi to AWS to fetch the requested data 
+### Step 7. Upload Any CSV File an S3 Bucket
+- Open the `S3 bucket` in a different Browser
+- Locate your S3 name: `kylebucket7958` Click on the name
+- Click `Upload`
+- Click `add file`
+- Locate our CSV file used from the beginning of this Lab, select Add, and click on `Upload`
+- - Note: Now Splunk will go to AWS and ask for data from the S3 Bucket because we created an input around that Splunk will ask AWS to share that data with.
+  - So AWS will request an authentication key before allowing Spluck to access the data.
+  - Then Spluck will give the Authentication key, which was provided in the cost of creating the account
+  - And then Spluck will log into AWS to fetch the requested data 
 
 
-### 8. Verify if inputs has been create
-- Go to Apps in Splunk
-- Click on Search/reporting
-- - Type: indes=awscap press enter
-  - Click on Host: You will see host IP under Values
-  - Click on Source: Under Value you will see S3://kylebucket7958/csvfile
-  - Click on Source Type: you will see AWS: S3
+### 8. Verify if the inputs have been created
+- Go to `Apps` in Splunk
+- Click on `Search/reporting`
+- - Type: `indes=awscap` press enter
+  - Click on Host: You will see the `host IP` under Values
+  - Click on Source: Under Value, you will see `S3://kylebucket7958/csvfile`
+  - Click on Source Type: you will see `AWS: S3`
 
 
-## the boy
+
