@@ -380,7 +380,7 @@ Create inputs.conf This will help Splunk to understand where to send data. now w
 
 ![image](https://github.com/user-attachments/assets/4e1642b4-79eb-47a8-8f3d-dfcf52a9f91e)
 
-## Part 6: SPLUNK INTEGRATION WITH AWS
+## Part 7: SPLUNK INTEGRATION WITH AWS
 ### Step 1. Log in to Splunk 
 - Go to splunk.com and log in
 - Click on Products
@@ -401,6 +401,61 @@ Note: Authentication (AWS Access key / Secret key) Splunk needs AWS Authenticati
     -  Block Public Access: uncheck block all access and check I Acknowledge ...
     -  Note: Leave the remaining of the setting and under the Bucket key check Disable and Scroll downn and click Create Bucket
     
-    
+ ### Step 3. Create Access and Secret Keys in AWS
+ - Click on the account name at top right coner
+ - Go to Security and Credentials
+ - Scroll down to Access Key and Click on Create Access Key NOTE: If you already have one use that ID and KEY but if not proceed to this process
+ - check other click on Next
+ - Leave Description tag Click Create Access Key
+ - Copy both ID and Key and save in notepad because we will need it later.
+ - Download the CSV File and save.
+ - 
+
+### Step 4. Log in to Splunk
+- Create a new index to capture data in Splunk (Refer to Part 6 Step 2 and Name it :AWScap)
+- Go to Apps, Click on Find More Apps, Search aws, click on Install Aws Add-on on Spluck to install, Click Open App
+- Under Login and Install. use you splunk log in credentials to log in Username and Password the click Agree and Install
+- After installing click on Open the App
+- 
+
+### Step 5. Add Account with AWS Credentials That's the (Access Key)
+- Click on Configration
+- Click on Add (Make sure you are in Account tab)
+- - Name: AWSaccount
+  - Key ID : AKIA4SZHNXLLHWZYK478
+  - Secret Key: Sbs3XaNsWr++r99mn4tb159yTHHCRZbnYZ8EIDDc
+  - region Global and click ADD.
+
+### Step 6. Create New Inputs
+- Click on Inputs
+- Custom Data Type
+- Generic S3 and fill out the Forms
+- - AWS Name: S3dataonboarding
+  - AWS Account:AWSaccount
+  - Leave Assume Role/Region/Use Private Endpoint
+  - S3 Bucket: klyebucket7958
+  - Leave Key Prefix
+  - Start Date/Time: 2024 Back date the Date
+  - End Date/Time:
+  - Source Type: AWS:S3
+  - Index: AWScap and Click on ADD to Add
+
+### Step 7. Upload Any CSV File on S3 Bucket
+- Open S3 bucket in a different Browser
+- Locate your S3 name: kylebucket7958 Click on the name
+- Click Upload
+- Click add file
+- Locate our CSV file used from the beginning of this Lab, select add and click on Upload
+- - Note: Now Splunk will go to AWS and ask for data from S3 Bucket because we created an input around, that splunk will ask AWS to share that data with,
+  - So AWS will request for (Authentication key before allowing spluck to access the data)
+  - Then Spluck will give Authentication key, which was provided in the cost off creating the account
+  - And then Spluck will logi to AWS to fetch the requested data 
 
 
+### 8. Verify if inputs has been create
+- Go to Apps in Splunk
+- Click on Search/reporting
+- - Type: indes=awscap press enter
+  - Click on Host: You will see host IP under Values
+  - Click on Source: Under Value you will see S3://kylebucket7958/csvfile
+  - Click on Source Type: you will see AWS: S3
