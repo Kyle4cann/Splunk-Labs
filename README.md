@@ -1,28 +1,33 @@
-# Splunk Labs 1
+# Splunk Labs 1 – Step-by-Step Guide
+
+### Introduction:
+This hands-on lab is designed to walk through a complete setup and integration of Splunk within a cloud-based environment. By leveraging AWS infrastructure and Ubuntu, the lab demonstrates how to install, configure, and utilize Splunk Enterprise for real-time data indexing, analysis, and visualization. It also covers the configuration of a universal forwarder and integration with AWS S3 buckets for extended data onboarding capabilities.
 
 ### Objectives:
+To create an AWS instance, install Splunk on Ubuntu, configure Splunk users, index and search static data, use SPL (Splunk Processing Language), install and configure a universal forwarder, and integrate AWS S3 bucket data with Splunk.
 
-## Part 1: Create an AWS account. 
+## Part 1: Create an AWS Account and Instance
 
 ### Step 1. 
 - Open https://aws.amazon.com/console/ in your browser
 - Click on the account and the AWS management console
 - Click on Create a new AWS Account
-- Fill in: Root user email address and AWS account name, the click verify email address
+- Fill in: Root user email address and AWS account name, and click verify email address
 - Open your mail to verify your account
+
 ### Step 2.
 - Open https://aws.amazon.com/console/ in your browser
 - Click on the account AWS management console
 - Click on Sign in using root user email
-- Enter your Email, the characters given to you, click on I'm not a robot, to enter your  password to log in
+- Enter your Email, the characters given to you, click on I'm not a robot, and enter your  password to log in
 ### Step 3:
 - At the search button, type ES2 and click on Instances
-- Click on Launch an instance
+- Click on Launch an instance:
 - Enter, fill out, or configure your server
 - ### Notes:
-- - Enter Name
+- - Enter Name: `KyleTech`
   - Select Ubuntu under Application and OS Image: Slpunk is very compatible with Ubuntu because it is liter
-  - For Splunk to run smoothly, it requires a minimum of 2 gig Virtual CPU and 4 GB of Memory. So, select T3 medium
+  - For Splunk to run smoothly, it requires a minimum of `2 gig Virtual CPU` and `4 GB of Memory`. So, select `T3 medium`
   - Click Key Pair to create Key Pair (SplunkTest )
   - Under Security Group, select Allow All.
   - Change storage to 30 GB because you are  eligible to use up to 30 GB
@@ -64,26 +69,35 @@ Screenshot 6.
 ### Step 2.
 - Go back to you Ubuntu Server to install Splunl
 - ### Terminal Commands:
-- - Sudo su ( To root user)
-  - cd /opt ( To the Directory of Splunk installation)
-  - Copy and Paste the link
-  - ls ( To View file downloader to the Director)
-  - dpkg -i splunk-9.4.2-e9664af3d956-linux-amd64.deb (To extract files to splunt default folder)
-  - sudo su splunk (to move root to splunk directory)
-  - cd splunk/bin
-  - ./splunk start --accept-license --answer-yes
-  - Enter Username
-  - Enter Password
-  - We will get our IP: as http://172.31.21.104:8000
-    
+  ```
+  Sudo su
+  ( To root user)
+  cd /opt
+  ( To the Directory of Splunk installation)
+  Copy and paste the link
+  ```
+  ls ( To View file downloader to the Director)
+  dpkg -i splunk-9.4.2-e9664af3d956-linux-amd64.deb (To extract files to splunt default folder)
+  ```
+  sudo su splunk
+  ```
+  (to move root to Splunk directory)
+  ```
+  cd splunk/bin
+  ./splunk start --accept-license --answer-yes
+  ```
+  * Enter Username: `admin`
+  * Enter Password: `password`
+  * We will get our IP: as http://172.31.21.104:8000
+ 
  ### Step 3. Allowing Port
- - Go to AWS under Instance created and copy the Public ip address paste in your url as shown: 3.17.109.107:8000 
+ 1. Go to AWS under Instance created and copy the Public ip address paste in your url as shown: `3.17.109.107:8000`
   - #### Note:
-    Its will not connect because in setting up our instance, we only allowed 3 ports and splunk runs on port number: 8000
-- Click on Instance Name
-- Security, Security Group, Open link in new tab, Edith Inbond Rules Add Rules, Custom IP 8000, and allowing forward enter 0.0.0.0/0 , Change Custom TCT to All Trafic for study purpose
-- Click Save Rules
-- Now we go back to refresh our splunk login page:
+    Its will not connect because in setting up our instance, we only allowed 3 ports and splunk runs on port number: `8000`
+2. Click on Instance Name
+3. Security, Security Group, Open link in new tab, Edith `Inbond Rules Add Rules`, `Custom IP 8000`, and allowing forward enter `0.0.0.0/0` , Change Custom TCT to `All Trafic` for study purpose
+4. Click Save Rules
+5. Now we go back to refresh our splunk login page:
 
 ![image](https://github.com/user-attachments/assets/3e22abbe-a1a5-4f48-8243-f5f81d684046)
 Screenshot  1.
@@ -122,7 +136,7 @@ Screenshot 6. Splunk HomePage
 
 
 
-## Part 3: Creating user in Splunk
+## Part 3: Creating User in Splunk
 ### Step 1
 - Lick on Settings and go to Users
 - Click New Users and Fill out the Form
@@ -156,12 +170,12 @@ Screenshot 7.
 ### Part 4. Indexing Static Data And Searching.
 ### Step 1. Download CSV File
 - Open any Browser go to google and search CSV file download
-- Select toolsfairy and Download CSV file
+- Select `toolsfairy` and `Download CSV file`
 ### Step 2 Add Downloaded CSV File (Select Source)
 - Login to Splunk Home Page
 - Click on Add data
 - Click on Upload
-- Select File Sample-CSV-file
+- Select File `Sample-CSV-file`
 - Click Open to load file
 - ### Note: Under Set Source Type
 - If Timestamp is not showing Enable by:
@@ -169,14 +183,14 @@ Screenshot 7.
   - Select  Current and Save
 - ### Under Input Settings
 - Click on Create a new index
-- Name it Splunkdemo and Save
-- Select Splunkdemo
+- Name it `Splunkdemo` and Save
+- Select `Splunkdemo`
 - Review and Submit
 ### Step 3. Searching
 - Click on Start Searching
-- In New Search type index="Splunkdemo" to load Static File
-- Select All time set time to prefferred time frame and press enter to search
-- 
+- In New Search type `index="Splunkdemo"` to load `Static File`
+- Select All time set time to preferred time frame and press Enter to search
+
 
 ![image](https://github.com/user-attachments/assets/342a4336-b04d-4992-814f-4a5019b0d176)
 Screenshot 1.
@@ -226,21 +240,27 @@ Screenshot 15
 ![image](https://github.com/user-attachments/assets/e1fa8818-3490-465e-97bd-576dc241f59b)
 Screenshot 16
 
-### Part 5: Splunk Processing Language.
+### Part 5: SPL (Splunk Processing Language)
 SPL: Splunk Processing Language is used to search and retrieve stored data (Playing around with Fields and creating Visualization)
 ### Step 1. Adding to the Index
-- Under Search type index= index name eg index="_internal"
+- Under Search type `index= index` name eg `index="_internal"`
 - Add Host IP
 - Add Source (Matrix)
 - Add Source Type (Splunkd)
 ### Step 2. Modify timestamp
 This enhances searching 
-- Earliest Field (earliest= -15m@m), this means that i want to search data for the first 15 minutes
-- Latest Field (latest= -1m@m) Mean search data for last minute
+- Earliest Field `(earliest= -15m@m)`, this means that I want to search data for the first 15 minutes
+- Latest Field `(latest= -1m@m)` Mean search data for last minute
 ### Step 3. Graphs
 - Stats convert to Table
 - Chart Convert to Graph on X and Y Axis
-- Time Chart convert to graph on Time Note: before transforming, you will need PY (|) followed by command eg, index="_internal" | Stats Count by group., | Chart count by name., | Time Chart by Series
+- Time Chart converted to a graph on Time Note: before transforming, you will need PY (|) followed by command, eg,
+  ```spl
+  index="_internal"
+  index="_internal" | stats count by sourcetype
+  index="_internal" | chart count by source
+  index="_internal" | timechart count
+  ```
 ### Step 4. Creating Dashboard
 - Click Edit from the homepage
 - Add Panel
@@ -287,20 +307,26 @@ Install a universal Forwarder on another server and make sure the Splunk service
 - In this case, follow Part 1, step 3 to step 4.
 - Visit the Splunk webpage and click on Get My Free Download under Universal Forwarder
 - Select Linux 64-bit, .deb, and copy the  link
+ 
+
 
 ### Step 1a. Commads
-- sudo su
-- cd /opt/
-- Paste link here:
-- ls
-- Extract downloaded file: dpky -i splunkforwarder-9.4.2......
-- ls
-- change directory: cd splunkforwarder/bin/
-- Start splankforwarder: ./splunk start --accept-licence --answer-yes.
+ ```bash
+  sudo su
+  cd /opt
+  wget [forwarder link]
+  dpkg -i splunkforwarder.deb
+  cd splunkforwarder/bin
+  ./splunk start --accept-license --answer-yes
+  ```
   In case there is an error, run these commands:
-  - sudo systemctl daemon-reload
-  - sudo systemctl restart splunkforwarder. service
-  - ./restart.
+  ```
+  sudo systemctl daemon-reload
+  sudo systemctl restart splunkforwarder. service
+  ```
+  ```
+  ./restart.
+  ```
 
 ![image](https://github.com/user-attachments/assets/2cb9d198-1bf3-4459-bc08-7e68917b629f)
 
@@ -314,20 +340,26 @@ Install a universal Forwarder on another server and make sure the Splunk service
 
 ![image](https://github.com/user-attachments/assets/7dfe5353-6ff9-4394-ac59-5f7cabe319c9)
 
-### Step 2. Create input
-Create inputs.conf file to monitor the file (This will help Splunk to understand what file Splunk needs to monitor 
+### Step 2. Create/Configure Inputs:
+Create an `inputs.conf` file to monitor the file (This will help Splunk to understand what file Splunk needs to monitor 
 command:
-- cd /var/log
-- ls -la
-- cd /opt/splunkforwarder/etc/apps/search
-- ls -la
-- cd /opt/splunkforwarder/etc/apps/search/local create input in local
-- mkdir local
-- vi inputs.conf
-- - [monitor:///var/log/syslog]
-  - disabled = 0
-  - index = splunkdemo2: to edit, press i to insert, and to save:wq enter.
-  - Note: Create index name Splunkdemo2. Log in to Splunk as Admin, Settings, New Index and fill out form by giving it only a Name Splunkdemo2 Save.
+```bash
+cd /var/log
+ls -la
+cd /opt/splunkforwarder/etc/apps/search
+ls -la
+cd /opt/splunkforwarder/etc/apps/search/local create input in local
+mkdir local
+```
+```bash
+mkdir /opt/splunkforwarder/etc/apps/search/local
+vi inputs.conf
+[monitor:///var/log/syslog]
+disabled = 0
+index = splunkdemo2
+```
+ To edit, press i to `insert`, and to save `:wq enter`
+  - Note: Create index name `Splunkdemo2`. Log in to Splunk as Admin, `Settings`, `New Index` and fill out form by giving it only a Name `Splunkdemo2` Save.
 
 ![image](https://github.com/user-attachments/assets/725a0434-d897-4734-8fd2-50bb4aa9f6fd)
 
@@ -341,18 +373,29 @@ command:
 
 ![image](https://github.com/user-attachments/assets/c5e2dc11-e0f7-474c-90de-148c0d8e3e0b)
 
-### Step 3. Create input
+### Step 3. Create/Configure Outputs:
 Create inputs.conf This will help Splunk to understand where to send data. now we have to tell our forwarder to send our capture data.
-- vi outputs.conf
-- - [tcpout]
-  - defaultGroup=my_indexers
- 
-  - [tcpout:my_indexers]
-  - server=3.17.109.107:9997
-  - [tcpout-server://3.17.109.107:9997] to edit, press i to insert, and to save  :wq enter.
-  - Note: 9997 is the port to communicate through; we must let Splunk receive from port 9997.
-  - Go to Splunk Homepage, Settings, click on Forwarding/receiving, New receiving port, type 9997, and click on save.
-  - Restart Splunk service on both servers, and to do that, we have to change the Directory cd /opt/splunkforwarder/bin/ and ./splunk restart
+```bash
+vi outputs.conf
+[tcpout]
+defaultGroup = my_indexers
+
+[tcpout:my_indexers]
+server = [Your-Splunk-IP]:9997
+```
+
+* Enable receiving on port `9997` in Splunk
+* Restart forwarder: `./splunk restart`
+
+Search with:
+
+```spl
+index="splunkdemo2"
+```
+To edit, press i to insert, and to save  `:wq enter`.
+  - Note: `9997` is the port to communicate through; we must let Splunk receive from `port 9997`.
+  - Go to Splunk Homepage, `Settings`, click on `Forwarding/receiving`, `New receiving port`, type `9997`, and click on save.
+  - Restart Splunk service on both servers, and to do that, we have to change the Directory `cd /opt/splunkforwarder/bin/` and `./splunk restart`
 
 ![image](https://github.com/user-attachments/assets/228d5da8-3e10-4910-addf-60af02f93c46)
 
@@ -372,7 +415,7 @@ Create inputs.conf This will help Splunk to understand where to send data. now w
 - Go to your instance page and run the KyleTechForwarder instance
 - Launch the KyleTech instance
 - Log in to the Splunk Admin page and log in
-- Go to Search, type index="Splunkdemo2", enter 
+- Go to Search, type `index="Splunkdemo2"`, enter 
 
 ![image](https://github.com/user-attachments/assets/7b4016c9-862b-432e-93b1-e423ae57c09d)
 
@@ -459,3 +502,6 @@ Note: Authentication (AWS Access key / Secret key) Splunk needs AWS Authenticati
   - Click on Host: You will see host IP under Values
   - Click on Source: Under Value you will see S3://kylebucket7958/csvfile
   - Click on Source Type: you will see AWS: S3
+
+
+## the boy
